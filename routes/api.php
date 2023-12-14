@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,4 +16,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::namespace('api')->group(function(){
+
+    Route::prefix('post')->group(function(){
+        Route::get('index',[PostController::class,'index']);
+        Route::post('store',[PostController::class,'store']);
+        Route::get('show',[PostController::class,'show']);
+        Route::post('update',[PostController::class,'update']);
+        Route::get('destroy',[PostController::class,'destroy']);
+    });
 });
