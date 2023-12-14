@@ -16,7 +16,7 @@ Steps for setup of laravel project
 
 - Server Setup for PHP Project
 - Install apache2, php 8.1 etc 
-- Install composer
+- Install composer latest
 - [git clone the project](https://github.com/saibVSquare/Practice-laravel-10.git)
 - Update .env file according like database name or password
 - Create database with same name in the .env file in your database (workbench,Phpmyadmin) 
