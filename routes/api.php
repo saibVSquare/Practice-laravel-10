@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Enums\Category;
 use App\Http\Controllers\PostController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,13 +20,25 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::namespace('api')->group(function(){
-
-    Route::prefix('post')->group(function(){
-        Route::get('index',[PostController::class,'index']);
-        Route::post('store',[PostController::class,'store']);
-        Route::get('show',[PostController::class,'show']);
-        Route::post('update',[PostController::class,'update']);
-        Route::get('destroy',[PostController::class,'destroy']);
+Route::fallback(function () {
+    Route::get('/404', function () {
+        return '404 Page';
     });
 });
+
+
+
+Route::namespace('api')
+    ->group(function () {
+        Route::prefix('post')->group(function () {
+            Route::get('index', [PostController::class, 'index'])->name('index');
+            Route::post('store', [PostController::class, 'store']);
+            Route::get('show/{post:slug}', [PostController::class, 'show']);
+            Route::post('update', [PostController::class, 'update']);
+            Route::get('destroy', [PostController::class, 'destroy']);
+        });
+
+        Route::get('/categories/{category}', function (Category $category) {
+            return $category->value;
+        });
+    });
