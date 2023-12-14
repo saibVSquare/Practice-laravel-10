@@ -19,6 +19,7 @@ Steps for setup of laravel project
 - Install composer
 - [git clone the project](https://github.com/saibVSquare/Practice-laravel-10.git)
 - Update .env file according like database name or password
+- Create database with same name in the .env file in your database (workbench,Phpmyadmin) 
 - Run the command to migrate the tables into the database "php artisan migrate".
 - Run the command to serve the project "php artisan serve".
 - [get postman collection](https://red-space-679516.postman.co/workspace/Personal-Workspace~29be147a-338f-405b-aa6b-41a1af7d93c6/folder/17217782-3d31479f-482f-4699-b9ac-03f182ae3eec?ctx=documentation) 
